@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import jwt, { type SignOptions } from "jsonwebtoken";
 import { env } from "../config/env";
 import { User, type UserDoc } from "../models/User";
 import { ApiError } from "../utils/errors";
@@ -38,7 +38,7 @@ export const issueToken = (user: { id: string; name: string; email: string; role
       name: user.name
     },
     env.JWT_SECRET,
-    { expiresIn: env.JWT_EXPIRES_IN }
+    { expiresIn: env.JWT_EXPIRES_IN as SignOptions["expiresIn"] }
   );
 };
 

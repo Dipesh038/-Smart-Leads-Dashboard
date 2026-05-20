@@ -8,7 +8,7 @@ import { createLeadSchema, listLeadQuerySchema, updateLeadSchema } from "../vali
 const router = Router();
 
 router.get("/", requireAuth, validateQuery(listLeadQuerySchema), getLeads);
-router.get("/export", requireAuth, validateQuery(listLeadQuerySchema), exportLeads);
+router.get("/export", requireAuth, requireRole("admin"), validateQuery(listLeadQuerySchema), exportLeads);
 router.get("/:id", requireAuth, getLead);
 router.post("/", requireAuth, validateBody(createLeadSchema), createLeadHandler);
 router.put("/:id", requireAuth, validateBody(updateLeadSchema), updateLeadHandler);

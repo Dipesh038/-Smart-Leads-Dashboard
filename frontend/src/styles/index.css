@@ -10,11 +10,28 @@
   color-scheme: dark;
 }
 
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
 body {
   font-family: "Source Sans 3", sans-serif;
+  background-color: #f6f7fb;
+  color: #1e2433;
+}
+
+html.dark body {
+  background-color: #111827;
+  color: #f8fafc;
 }
 
 .bg-grid {
   background-image: radial-gradient(circle at 1px 1px, rgba(94, 106, 135, 0.18) 1px, transparent 0);
   background-size: 28px 28px;
+}
+
+.dark .bg-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(127, 138, 168, 0.14) 1px, transparent 0);
 }

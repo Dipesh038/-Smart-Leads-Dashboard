@@ -1,6 +1,7 @@
 import React, { createContext, useCallback, useEffect, useMemo, useState } from "react";
 import { fetchMe, loginUser, registerUser } from "../api/authApi";
 import type { User } from "../utils/types";
+import { authExpiredEvent } from "../utils/authEvents";
 
 type AuthContextValue = {
   user: User | null;
@@ -38,6 +39,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     bootstrap();
   }, [bootstrap]);
+
+  useEffect(() => {
+    const handleAuthExpired = () => {
+      localStorage.removeItem("smartleads-token");
+      setToken(null);
+      setUser(null);
+      setLoading(false);
+    };
+
+    window.addEventListener(authExpiredEvent, handleAuthExpired);
+    return () => window.removeEventListener(authExpiredEvent, handleAuthExpired);
+  }, []);
 
   const login = useCallback(async (email: string, password: string) => {
     const data = await loginUser({ email, password });

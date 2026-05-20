@@ -8,11 +8,11 @@ type PaginationProps = {
 
 const Pagination = ({ meta, onPageChange }: PaginationProps) => {
   return (
-    <div className="flex items-center justify-between rounded-2xl border border-ink-100 bg-white px-4 py-3 text-sm text-ink-600 dark:border-ink-800 dark:bg-ink-900 dark:text-ink-200">
-      <span>
+    <div className="flex flex-col gap-3 rounded-2xl border border-ink-100 bg-white px-4 py-3 text-sm text-ink-600 shadow-card dark:border-ink-800 dark:bg-ink-900 dark:text-ink-200 sm:flex-row sm:items-center sm:justify-between">
+      <span className="text-ink-500 dark:text-ink-300">
         Page {meta.currentPage} of {meta.totalPages}
       </span>
-      <div className="flex gap-2">
+      <div className="flex items-center gap-2 self-start sm:self-auto">
         <Button variant="ghost" disabled={!meta.hasPrevPage} onClick={() => onPageChange(meta.currentPage - 1)}>
           Previous
         </Button>

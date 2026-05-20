@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import InputField from "../components/InputField";
 import Button from "../components/Button";
 import { useAuth } from "../hooks/useAuth";
+import { getErrorMessage } from "../utils/apiError";
 
 const RegisterPage = () => {
   const { register } = useAuth();
@@ -25,8 +26,8 @@ const RegisterPage = () => {
     try {
       await register(name, email, password);
       navigate("/");
-    } catch {
-      setError("Unable to register with those details");
+    } catch (err) {
+      setError(getErrorMessage(err, "Unable to register with those details"));
     } finally {
       setLoading(false);
     }
@@ -47,7 +48,11 @@ const RegisterPage = () => {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
             />
-            {error ? <div className="rounded-xl bg-ember-50 px-3 py-2 text-xs text-ember-700">{error}</div> : null}
+            {error ? (
+              <div className="rounded-xl border border-ember-200 bg-ember-50 px-3 py-2 text-xs text-ember-700 dark:border-ember-800 dark:bg-ember-950/40 dark:text-ember-200">
+                {error}
+              </div>
+            ) : null}
             <Button type="submit" full disabled={loading}>
               {loading ? "Creating account..." : "Create account"}
             </Button>

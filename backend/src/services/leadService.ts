@@ -24,25 +24,22 @@ const buildFilters = (filters: ListFilters) => {
 
 export const listLeads = async (filters: ListFilters) => {
   const limit = 10;
-  const skip = (filters.page - 1) * limit;
   const query = buildFilters(filters);
-  const sort = filters.sort === "oldest" ? { createdAt: 1 } : { createdAt: -1 };
-
-  const [totalRecords, leads] = await Promise.all([
-    Lead.countDocuments(query),
-    Lead.find(query).sort(sort).skip(skip).limit(limit)
-  ]);
-
+  const sort = filters.sort === "oldest" ? { createdAt: 1 as const } : { createdAt: -1 as const };
+  const totalRecords = await Lead.countDocuments(query);
   const totalPages = Math.max(1, Math.ceil(totalRecords / limit));
+  const currentPage = Math.min(filters.page, totalPages);
+  const skip = (currentPage - 1) * limit;
+  const leads = await Lead.find(query).sort(sort).skip(skip).limit(limit);
 
   return {
     leads,
     meta: {
       totalRecords,
       totalPages,
-      currentPage: filters.page,
-      hasNextPage: filters.page < totalPages,
-      hasPrevPage: filters.page > 1
+      currentPage,
+      hasNextPage: currentPage < totalPages,
+      hasPrevPage: currentPage > 1
     }
   };
 };
@@ -65,7 +62,7 @@ export const deleteLead = async (id: string) => {
 
 export const exportLeadsCsv = async (filters: Omit<ListFilters, "page">) => {
   const query = buildFilters({ ...filters, page: 1 });
-  const sort = filters.sort === "oldest" ? { createdAt: 1 } : { createdAt: -1 };
+  const sort = filters.sort === "oldest" ? { createdAt: 1 as const } : { createdAt: -1 as const };
   const leads = await Lead.find(query).sort(sort);
   const parser = new Parser({ fields: ["name", "email", "status", "source", "createdAt"] });
   return parser.parse(leads);

@@ -1,8 +1,9 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Types } from "mongoose";
 
 export type UserRole = "admin" | "sales";
 
 export type UserDoc = {
+  _id: Types.ObjectId;
   name: string;
   email: string;
   password: string;

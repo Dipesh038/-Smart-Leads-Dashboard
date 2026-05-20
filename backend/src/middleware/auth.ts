@@ -2,6 +2,7 @@ import type { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { env } from "../config/env";
 import { ApiError } from "../utils/errors";
+import { User } from "../models/User";
 
 type TokenPayload = {
   sub: string;
@@ -24,13 +25,24 @@ export const requireAuth = (req: Request, _res: Response, next: NextFunction) =>
 
   try {
     const payload = jwt.verify(token, env.JWT_SECRET) as TokenPayload;
-    req.user = {
-      id: payload.sub,
-      role: payload.role,
-      email: payload.email,
-      name: payload.name
-    };
-    return next();
+    User.findById(payload.sub)
+      .select("name email role")
+      .lean()
+      .then((user) => {
+        if (!user) {
+          return next(new ApiError(401, "Unauthorized"));
+        }
+
+        req.user = {
+          id: user._id.toString(),
+          role: user.role,
+          email: user.email,
+          name: user.name
+        };
+
+        return next();
+      })
+      .catch(() => next(new ApiError(401, "Unauthorized")));
   } catch {
     return next(new ApiError(401, "Unauthorized"));
   }

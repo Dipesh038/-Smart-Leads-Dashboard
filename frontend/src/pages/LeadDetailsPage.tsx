@@ -24,7 +24,7 @@ const LeadDetailsPage = () => {
         setLoading(false);
       }
     };
-    loadLead();
+    void loadLead();
   }, [id]);
 
   if (loading) {
@@ -33,7 +33,7 @@ const LeadDetailsPage = () => {
 
   if (error || !lead) {
     return (
-      <div className="rounded-2xl border border-ember-200 bg-ember-50 px-4 py-3 text-sm text-ember-700">
+      <div className="rounded-2xl border border-ember-200 bg-ember-50 px-4 py-3 text-sm text-ember-700 dark:border-ember-800 dark:bg-ember-950/40 dark:text-ember-200">
         {error ?? "Lead not found"}
       </div>
     );
