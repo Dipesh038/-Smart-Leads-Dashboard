@@ -8,8 +8,8 @@ type PaginationProps = {
 
 const Pagination = ({ meta, onPageChange }: PaginationProps) => {
   return (
-    <div className="flex flex-col gap-3 rounded-2xl border border-ink-100 bg-white px-4 py-3 text-sm text-ink-600 shadow-card dark:border-ink-800 dark:bg-ink-900 dark:text-ink-200 sm:flex-row sm:items-center sm:justify-between">
-      <span className="text-ink-500 dark:text-ink-300">
+    <div className="flex flex-col gap-3 rounded-2xl border border-ink-100 bg-white px-4 py-3 text-sm text-ink-600 shadow-card dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 sm:flex-row sm:items-center sm:justify-between">
+      <span className="text-ink-500 dark:text-gray-400">
         Page {meta.currentPage} of {meta.totalPages}
       </span>
       <div className="flex items-center gap-2 self-start sm:self-auto">

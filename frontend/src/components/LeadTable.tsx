@@ -16,10 +16,10 @@ const LeadTable = ({
   canDelete: boolean;
 }) => {
   return (
-    <div className="overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-card dark:border-ink-800 dark:bg-ink-900">
+    <div className="overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-card dark:border-gray-700 dark:bg-gray-900">
       <div className="overflow-x-auto">
         <table className="w-full min-w-[720px] text-left text-sm">
-          <thead className="bg-ink-50 text-xs uppercase tracking-wide text-ink-500 dark:bg-ink-950 dark:text-ink-400">
+          <thead className="bg-ink-50 text-xs uppercase tracking-wide text-ink-500 dark:bg-gray-900 dark:text-gray-400">
             <tr>
               <th className="px-5 py-3">Lead</th>
               <th className="px-5 py-3">Status</th>
@@ -30,18 +30,21 @@ const LeadTable = ({
           </thead>
           <tbody>
             {leads.map((lead) => (
-              <tr key={lead._id} className="border-t border-ink-100 dark:border-ink-800">
+              <tr
+                key={lead._id}
+                className="border-t border-ink-100 bg-white transition-colors hover:bg-ink-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+              >
                 <td className="px-5 py-4">
-                  <Link to={`/leads/${lead._id}`} className="font-semibold text-ink-900 hover:underline dark:text-ink-100">
+                  <Link to={`/leads/${lead._id}`} className="font-semibold text-ink-900 hover:underline dark:text-white">
                     {lead.name}
                   </Link>
-                  <div className="text-xs text-ink-500 dark:text-ink-400">{lead.email}</div>
+                  <div className="text-xs text-ink-500 dark:text-gray-400">{lead.email}</div>
                 </td>
                 <td className="px-5 py-4">
                   <Badge status={lead.status} />
                 </td>
-                <td className="px-5 py-4 text-ink-600 dark:text-ink-200">{lead.source}</td>
-                <td className="px-5 py-4 text-ink-600 dark:text-ink-200">{formatDate(lead.createdAt)}</td>
+                <td className="px-5 py-4 text-ink-600 dark:text-gray-200">{lead.source}</td>
+                <td className="px-5 py-4 text-ink-600 dark:text-gray-200">{formatDate(lead.createdAt)}</td>
                 <td className="px-5 py-4 text-right">
                   <div className="flex justify-end gap-2">
                     <Button variant="outline" onClick={() => onEdit(lead)}>

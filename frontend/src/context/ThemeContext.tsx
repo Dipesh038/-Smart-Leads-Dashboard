@@ -11,11 +11,19 @@ export const ThemeContext = createContext<ThemeContextValue | undefined>(undefin
 
 const getStoredTheme = (): Theme => {
   const stored = localStorage.getItem("smartleads-theme");
+  if (stored === "dark" || stored === "light") {
+    return stored;
+  }
+
+  if (document.documentElement.classList.contains("dark")) {
+    return "dark";
+  }
+
   return stored === "dark" ? "dark" : "light";
 };
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>(getStoredTheme());
+  const [theme, setTheme] = useState<Theme>(() => getStoredTheme());
 
   useEffect(() => {
     const root = document.documentElement;
@@ -24,6 +32,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     } else {
       root.classList.remove("dark");
     }
+    root.style.colorScheme = theme;
     localStorage.setItem("smartleads-theme", theme);
   }, [theme]);
 

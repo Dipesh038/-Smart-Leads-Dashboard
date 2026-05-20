@@ -132,10 +132,10 @@ const DashboardPage = () => {
 
   return (
     <div className="mx-auto max-w-6xl space-y-6">
-      <div className="flex flex-col gap-4 rounded-2xl border border-ink-100 bg-white p-6 shadow-card dark:border-ink-800 dark:bg-ink-900 md:flex-row md:items-center md:justify-between">
+      <div className="flex flex-col gap-4 rounded-2xl border border-ink-100 bg-white p-6 shadow-card dark:border-gray-700 dark:bg-gray-900 md:flex-row md:items-center md:justify-between">
         <div>
-          <h2 className="text-xl font-semibold">Leads overview</h2>
-          <p className="text-sm text-ink-500 dark:text-ink-300">Stay ahead with real-time filtering and focused follow-ups.</p>
+          <h2 className="text-xl font-semibold text-ink-900 dark:text-white">Leads overview</h2>
+          <p className="text-sm text-ink-500 dark:text-gray-400">Stay ahead with real-time filtering and focused follow-ups.</p>
         </div>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
           {canExport ? (
@@ -147,7 +147,7 @@ const DashboardPage = () => {
         </div>
       </div>
 
-      <div className="grid gap-4 rounded-2xl border border-ink-100 bg-white p-6 shadow-card dark:border-ink-800 dark:bg-ink-900 md:grid-cols-4">
+      <div className="grid gap-4 rounded-2xl border border-ink-100 bg-white p-6 shadow-card dark:border-gray-700 dark:bg-gray-900 md:grid-cols-4">
         <InputField
           label="Search"
           value={search}
@@ -211,7 +211,7 @@ const DashboardPage = () => {
         />
       )}
 
-      {deletingId ? <div className="text-sm text-ink-500 dark:text-ink-300">Removing lead...</div> : null}
+      {deletingId ? <div className="text-sm text-ink-500 dark:text-gray-400">Removing lead...</div> : null}
 
       {meta ? <Pagination meta={meta} onPageChange={setPage} /> : null}
 

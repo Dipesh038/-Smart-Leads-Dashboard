@@ -6,8 +6,8 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-ink-50 dark:bg-ink-900">
-        <div className="rounded-2xl border border-ink-100 bg-white px-6 py-4 text-sm text-ink-600 shadow-card dark:border-ink-800 dark:bg-ink-950 dark:text-ink-200">
+      <div className="flex min-h-screen items-center justify-center bg-ink-50 dark:bg-[#0f1117]">
+        <div className="rounded-2xl border border-ink-100 bg-white px-6 py-4 text-sm text-ink-600 shadow-card dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200">
           Loading your workspace...
         </div>
       </div>

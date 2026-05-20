@@ -6,7 +6,7 @@
   color-scheme: light;
 }
 
-.dark {
+html.dark {
   color-scheme: dark;
 }
 
@@ -16,15 +16,20 @@ body,
   min-height: 100%;
 }
 
-body {
-  font-family: "Source Sans 3", sans-serif;
+html {
   background-color: #f6f7fb;
   color: #1e2433;
 }
 
-html.dark body {
-  background-color: #111827;
-  color: #f8fafc;
+html.dark {
+  background-color: #0f1117;
+  color: #f3f4f6;
+}
+
+body {
+  font-family: "Source Sans 3", sans-serif;
+  background-color: transparent;
+  color: inherit;
 }
 
 .bg-grid {

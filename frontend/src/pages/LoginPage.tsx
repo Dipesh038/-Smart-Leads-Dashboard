@@ -28,15 +28,15 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-ink-50 text-ink-900 dark:bg-ink-950 dark:text-ink-900">
+    <div className="min-h-screen bg-ink-50 text-ink-900 dark:bg-[#0f1117] dark:text-gray-100">
       <div className="mx-auto flex min-h-screen max-w-5xl items-center px-6">
         <div className="grid w-full gap-10 md:grid-cols-2">
           <div className="flex flex-col justify-center">
-            <h1 className="text-3xl font-semibold font-display">Smart Leads Dashboard</h1>
-            <p className="mt-3 text-sm text-ink-600 dark:text-ink-900">
+            <h1 className="font-display text-3xl font-semibold text-ink-900 dark:text-white">Smart Leads Dashboard</h1>
+            <p className="mt-3 text-sm text-ink-600 dark:text-gray-400">
               Track leads, stay on top of outreach, and keep the pipeline moving with clarity.
             </p>
-            <div className="mt-8 rounded-2xl border border-ink-100 bg-white p-6 shadow-card dark:border-ink-800 dark:bg-ink-900">
+            <div className="mt-8 rounded-2xl border border-ink-100 bg-white p-6 shadow-card dark:border-gray-700 dark:bg-gray-900">
               <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                 <InputField label="Email" value={email} onChange={(event) => setEmail(event.target.value)} />
                 <InputField
@@ -46,7 +46,7 @@ const LoginPage = () => {
                   onChange={(event) => setPassword(event.target.value)}
                 />
                 {error ? (
-                  <div className="rounded-xl border border-ember-200 bg-ember-50 px-3 py-2 text-xs text-ember-700 dark:border-ember-800 dark:bg-ember-50 dark:text-ember-600">
+                  <div className="rounded-xl border border-ember-200 bg-ember-50 px-3 py-2 text-xs text-ember-700 dark:border-ember-800 dark:bg-ember-950/40 dark:text-ember-200">
                     {error}
                   </div>
                 ) : null}
@@ -54,12 +54,12 @@ const LoginPage = () => {
                   {loading ? "Signing in..." : "Sign in"}
                 </Button>
               </form>
-              <p className="mt-4 text-xs text-ink-500">
-                New here? <Link to="/register" className="font-semibold text-ink-900 dark:text-ink-100">Create an account</Link>
+              <p className="mt-4 text-xs text-ink-500 dark:text-gray-400">
+                New here? <Link to="/register" className="font-semibold text-ink-900 dark:text-white">Create an account</Link>
               </p>
             </div>
           </div>
-          <div className="hidden flex-col justify-center gap-4 rounded-2xl bg-ink-900 p-8 text-white shadow-soft md:flex">
+          <div className="hidden flex-col justify-center gap-4 rounded-2xl bg-ink-900 p-8 text-white shadow-soft dark:bg-gray-900 md:flex">
             <div className="text-sm uppercase tracking-wide text-ink-200">Sales snapshot</div>
             <h2 className="text-2xl font-semibold">Keep every lead in view.</h2>
             <p className="text-sm text-ink-200">

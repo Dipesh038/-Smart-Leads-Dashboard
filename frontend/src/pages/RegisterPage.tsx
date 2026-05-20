@@ -34,11 +34,11 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-ink-50 text-ink-900 dark:bg-ink-950 dark:text-ink-100">
+    <div className="min-h-screen bg-ink-50 text-ink-900 dark:bg-[#0f1117] dark:text-gray-100">
       <div className="mx-auto flex min-h-screen max-w-4xl items-center px-6">
-        <div className="w-full rounded-2xl border border-ink-100 bg-white p-8 shadow-card dark:border-ink-800 dark:bg-ink-900">
-          <h1 className="text-2xl font-semibold">Create your workspace</h1>
-          <p className="mt-2 text-sm text-ink-500">Invite yourself as a sales user and start tracking leads.</p>
+        <div className="w-full rounded-2xl border border-ink-100 bg-white p-8 shadow-card dark:border-gray-700 dark:bg-gray-900">
+          <h1 className="text-2xl font-semibold text-ink-900 dark:text-white">Create your workspace</h1>
+          <p className="mt-2 text-sm text-ink-500 dark:text-gray-400">Invite yourself as a sales user and start tracking leads.</p>
           <form className="mt-6 flex flex-col gap-4" onSubmit={handleSubmit}>
             <InputField label="Full name" value={name} onChange={(event) => setName(event.target.value)} />
             <InputField label="Email" value={email} onChange={(event) => setEmail(event.target.value)} />
@@ -57,8 +57,8 @@ const RegisterPage = () => {
               {loading ? "Creating account..." : "Create account"}
             </Button>
           </form>
-          <p className="mt-4 text-xs text-ink-500">
-            Already have access? <Link to="/login" className="font-semibold text-ink-900 dark:text-ink-100">Sign in</Link>
+          <p className="mt-4 text-xs text-ink-500 dark:text-gray-400">
+            Already have access? <Link to="/login" className="font-semibold text-ink-900 dark:text-white">Sign in</Link>
           </p>
         </div>
       </div>
