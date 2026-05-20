@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+body {
+  font-family: "Source Sans 3", sans-serif;
+}
+
+.bg-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(94, 106, 135, 0.18) 1px, transparent 0);
+  background-size: 28px 28px;
+}
