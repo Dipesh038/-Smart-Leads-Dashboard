@@ -4,7 +4,7 @@ A production-ready MERN dashboard for tracking sales leads with role-based acces
 
 ## Screenshots
 
-![Registration Page](screenshots/register.png)
+![Registration Page](screenshots/registration.png)
 
 Registration Page
 
